@@ -25,10 +25,6 @@ const ListOfPolls = ({}) => {
       <Poll />
       <Poll />
       <Poll />
-      <Poll />
-      <Poll />
-      <Poll />
-      <Poll />
     </Flex>
   );
 };

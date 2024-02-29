@@ -16,3 +16,13 @@ body {
   background-color: #fff;
   font-family: "Nunito", sans-serif;
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: #e5e4e4;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #a2a2a2;
+  border-radius: 5px;
+}
