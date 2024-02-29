@@ -1,0 +1,28 @@
+.poll {
+  padding: 0.875rem 1rem;
+  border-radius: 0.75rem;
+  background: #fff;
+  cursor: pointer;
+  outline: 4px solid transparent;
+  transition: outline 0.2s ease-out;
+}
+
+.poll:hover {
+  outline: 4px solid #1e8fff62;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); */
+}
+
+.heading {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.description {
+  color: #787878;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}

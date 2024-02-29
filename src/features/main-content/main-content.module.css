@@ -1,0 +1,14 @@
+.description {
+  color: #3c3c3c;
+  font-size: 1.25rem;
+}
+
+.date {
+  color: var(--primary);
+  font-size: 0.875rem;
+  margin-top: 0.2rem;
+  /* color: #fff; */
+  /* background-color: dodgerblue;
+  max-width: fit-content;
+  padding-inline: 0.2rem; */
+}

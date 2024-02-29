@@ -1,0 +1,12 @@
+.votes {
+  color: #3c3c3c;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.comments {
+  color: #1e90ff;
+  font-size: 1.125rem;
+  text-decoration-line: underline;
+  cursor: pointer;
+}

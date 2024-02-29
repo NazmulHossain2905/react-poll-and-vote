@@ -1,0 +1,59 @@
+.option {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 0.5rem;
+  border: 2px solid #b4b4b4;
+  padding: 0.625rem 1rem;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.option-name,
+.option-percent {
+  color: #787878;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.option-percent {
+}
+
+.percent-bg {
+  height: 100%;
+  background-color: #e5e6e7;
+  border-radius: 0.4rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  animation: slideRight 1s linear 0.5s;
+}
+
+@keyframes slideRight {
+  from {
+    width: 0%;
+  }
+  to {
+    width: var(--percent);
+  }
+}
+
+.option-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.selectPoll {
+  border: 2px solid #1e90ff;
+}
+
+.selectPoll .option-name,
+.selectPoll .option-percent {
+  color: dodgerblue;
+}
+
+.selectPoll .percent-bg {
+  background-color: #d8ecff;
+}

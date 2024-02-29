@@ -6,6 +6,12 @@
   box-sizing: border-box;
 }
 
+:root {
+  --primary: #1e90ff;
+  --gray: #3c3c3c;
+  --gray-shade: #eee;
+}
+
 body {
   background-color: #fff;
   font-family: "Nunito", sans-serif;

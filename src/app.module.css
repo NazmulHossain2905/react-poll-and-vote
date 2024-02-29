@@ -1,0 +1,10 @@
+.heading {
+  font-weight: 800;
+  color: #1e90ff;
+  font-size: 3rem;
+}
+
+.container {
+  align-items: flex-start;
+  gap: 3rem;
+}

@@ -1,0 +1,17 @@
+.icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  transition: background-color 0.2s ease-out;
+  cursor: pointer;
+}
+
+.icon:hover {
+  background-color: #0000001b;
+}
