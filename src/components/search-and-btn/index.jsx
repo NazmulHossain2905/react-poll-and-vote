@@ -15,11 +15,15 @@ class SearchAndButton extends React.Component {
   };
 
   render() {
-    const { submitPoll } = this.props;
+    const { submitPoll, searchOnChange } = this.props;
     return (
       <>
         <Row style={{ gap: "1rem", alignItems: "flex-start" }}>
-          <Input style={{ width: "100%" }} placeholder="Search a poll" />
+          <Input
+            style={{ width: "100%" }}
+            placeholder="Search a poll"
+            onChange={(e) => searchOnChange(e.target.value)}
+          />
           <Button onClick={this.toggleIsOpen}>Create a Poll</Button>
         </Row>
         <Modal isOpen={this.state.isOpen} toggleIsOpen={this.toggleIsOpen}>

@@ -17,6 +17,7 @@ class App extends React.Component {
     polls: [],
     selectedPoll: {},
     userId: "",
+    search: "",
   };
 
   componentDidMount() {
@@ -74,6 +75,30 @@ class App extends React.Component {
     this.setState({ polls });
   };
 
+  handleSearchOnChange = (value) => {
+    this.setState({ search: value });
+  };
+
+  performSearch = () => {
+    const { polls } = this.state;
+
+    return polls.filter((poll) =>
+      poll.title.toLowerCase().includes(this.state.search.toLowerCase())
+    );
+  };
+
+  getPolls = () => {
+    const polls = this.performSearch();
+    return (
+      <Sidebar
+        polls={polls}
+        selectPoll={this.handleSelectPoll}
+        submitPoll={this.handleSubmitPoll}
+        searchOnChange={this.handleSearchOnChange}
+      />
+    );
+  };
+
   render() {
     return (
       <Container>
@@ -83,11 +108,7 @@ class App extends React.Component {
         </Heading>
         <Space height={"1rem"} />
         <Row start className={classes.container}>
-          <Sidebar
-            polls={this.state.polls}
-            selectPoll={this.handleSelectPoll}
-            submitPoll={this.handleSubmitPoll}
-          />
+          {this.getPolls()}
           <MainContent
             userId={this.state.userId}
             selectedPoll={this.state.selectedPoll}
