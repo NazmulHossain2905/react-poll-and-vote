@@ -5,6 +5,7 @@
   cursor: pointer;
   outline: 4px solid transparent;
   transition: outline 0.2s ease-out;
+  width: 100%;
 }
 
 .poll:hover {
@@ -25,4 +26,8 @@
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+}
+
+.active {
+  outline: 4px solid #1e8fff62;
 }

@@ -6,7 +6,7 @@ import { AiFillDelete } from "react-icons/ai";
 import Space from "../Space";
 import classes from "./option-icon.module.css";
 
-const OptionIcon = ({}) => {
+const OptionIcon = ({ deletePoll }) => {
   return (
     <Row style={{ marginTop: "1.75rem" }}>
       <Heading element={"h3"} color={"var(--primary)"}>
@@ -20,7 +20,7 @@ const OptionIcon = ({}) => {
 
         <Space width={5} />
 
-        <button className={classes.icon}>
+        <button className={classes.icon} onClick={deletePoll}>
           <AiFillDelete size={22} color="#f00" />
         </button>
       </Row>

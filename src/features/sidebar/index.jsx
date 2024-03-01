@@ -6,15 +6,17 @@ import ListOfPolls from "../../components/list-of-polls";
 
 class Sidebar extends Component {
   render() {
+    const { polls, selectPoll, createPoll } = this.props;
+
     return (
       <div className={classes.container}>
-        <SearchAndButton />
+        <SearchAndButton createPoll={createPoll} />
 
         <Heading element="h3" color="dodgerblue">
           List of Polls
         </Heading>
 
-        <ListOfPolls />
+        <ListOfPolls polls={polls} selectPoll={selectPoll} />
       </div>
     );
   }

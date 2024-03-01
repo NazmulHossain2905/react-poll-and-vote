@@ -1,9 +1,9 @@
 import React from "react";
 import classes from "./option-group.module.css";
 
-const Option = ({ name, percent, className }) => {
+const Option = ({ name, percent, className, onClick }) => {
   return (
-    <div className={`${classes.option} ${className}`}>
+    <div className={`${classes.option} ${className}`} onClick={onClick}>
       <p className={classes["option-name"]}>{name}</p>
       <p className={classes["option-percent"]}>{percent}%</p>
       <div
@@ -14,13 +14,23 @@ const Option = ({ name, percent, className }) => {
   );
 };
 
-const OptionGroup = ({}) => {
+const OptionGroup = ({ selectedPoll, handleVote }) => {
+  const percent = (vote) => ((vote / selectedPoll.totalVote) * 100).toFixed(0);
+
   return (
     <div className={classes["option-group"]}>
-      <Option name={"C"} percent={13} />
+      {selectedPoll.options?.map((option, index) => (
+        <Option
+          key={option?.id}
+          name={option?.value}
+          percent={!isNaN(percent(option?.vote)) ? percent(option?.vote) : 0}
+          onClick={() => handleVote(selectedPoll.id, option?.id)}
+        />
+      ))}
+      {/* <Option name={"C"} percent={13} />
       <Option name={"Java"} percent={17} />
       <Option name={"JavaScript"} percent={45} className={classes.selectPoll} />
-      <Option name={"Python"} percent={30} />
+      <Option name={"Python"} percent={30} /> */}
     </div>
   );
 };

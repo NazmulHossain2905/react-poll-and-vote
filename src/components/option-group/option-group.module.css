@@ -27,7 +27,7 @@
   left: 0;
   top: 0;
   z-index: -1;
-  animation: slideRight 1s linear 0.5s;
+  animation: slideRight 1s linear;
 }
 
 @keyframes slideRight {

@@ -8,25 +8,40 @@ import VoteAndComments from "../../components/vote-and-comments";
 
 class MainContent extends React.Component {
   render() {
+    const { selectedPoll, deletePoll, handleVote } = this.props;
+
+    if (!Object.keys(selectedPoll).length) {
+      return (
+        <div>
+          <Heading color="#3C3C3C" size={"2rem"}>
+            Welcome to Poll and Vote Application.
+          </Heading>
+          <p className={classes.description}>
+            Please select any poll to Preview.
+          </p>
+        </div>
+      );
+    }
+
     return (
-      <div>
+      <div style={{ width: "100%" }}>
         <Heading color="#3C3C3C" size={"2rem"}>
-          What’s your favorite programming language?
+          {selectedPoll?.title}
         </Heading>
-        <p className={classes.description}>
-          There are a lot of programming language are available. Among them what
-          is your favorite One?
-        </p>
+        <p className={classes.description}>{selectedPoll?.description}</p>
 
-        <p className={classes.date}>Wednesday, 28 Feb 2024</p>
+        <p className={classes.date}>{selectedPoll.createdAt}</p>
 
-        <OptionIcon />
+        <OptionIcon deletePoll={() => deletePoll(selectedPoll.id)} />
         <Space height={10} />
 
-        <OptionGroup />
+        <OptionGroup selectedPoll={selectedPoll} handleVote={handleVote} />
         <Space height={10} />
 
-        <VoteAndComments />
+        <VoteAndComments
+          totalVote={selectedPoll?.totalVote}
+          comments={selectedPoll?.comments}
+        />
       </div>
     );
   }

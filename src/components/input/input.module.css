@@ -17,3 +17,14 @@
   height: 6rem;
   resize: none;
 }
+
+.error {
+  font-size: 0.8rem;
+  color: red;
+  margin-top: 2px;
+}
+
+.inputError {
+  border: 2px solid salmon;
+  outline: 4px solid #fa807252;
+}

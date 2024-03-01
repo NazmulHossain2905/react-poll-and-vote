@@ -5,6 +5,7 @@ const Input = ({
   type = "text",
   placeholder = "",
   value,
+  error,
   onChange,
   name,
   checked,
@@ -12,27 +13,37 @@ const Input = ({
   className,
 }) => {
   return type === "textarea" ? (
-    <textarea
-      style={style}
-      className={`${classes.input} ${classes.textarea} ${className}`}
-      placeholder={placeholder}
-      value={value}
-      name={name}
-      id={name}
-      onChange={onChange}
-    ></textarea>
+    <>
+      <textarea
+        style={style}
+        className={`${classes.input} ${classes.textarea} ${
+          error && classes.inputError
+        } ${className}`}
+        placeholder={placeholder}
+        value={value}
+        name={name}
+        id={name}
+        onChange={onChange}
+      ></textarea>
+      {error && <p className={classes.error}>{error}</p>}
+    </>
   ) : (
-    <input
-      style={style}
-      className={`${classes.input} ${className}`}
-      type={type}
-      placeholder={placeholder}
-      value={value}
-      checked={checked}
-      name={name}
-      id={name}
-      onChange={onChange}
-    />
+    <div style={{ flex: 1 }}>
+      <input
+        style={style}
+        className={`${classes.input} ${
+          error && classes.inputError
+        } ${className}`}
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        checked={checked}
+        name={name}
+        id={name}
+        onChange={onChange}
+      />
+      {error && <p className={classes.error}>{error}</p>}
+    </div>
   );
 };
 
