@@ -27,13 +27,24 @@ class App extends React.Component {
     this.setState({ selectedPoll });
   };
 
-  handleCreatePoll = (poll) => {
-    poll.id = randomIdGenerator();
-    poll.createdAt = new Date().toDateString();
-    poll.totalVote = 0;
-    poll.comments = [];
+  handleSubmitPoll = (poll) => {
+    if (poll.id) {
+      const { polls } = this.state;
 
-    this.setState({ polls: [poll, ...this.state.polls] });
+      const p = polls.find((p) => p.id === poll.id);
+      p.title = poll.title;
+      p.description = poll.description;
+      p.options = poll.options;
+
+      this.setState({ polls });
+    } else {
+      poll.id = randomIdGenerator();
+      poll.createdAt = new Date().toDateString();
+      poll.totalVote = 0;
+      poll.comments = [];
+
+      this.setState({ polls: [poll, ...this.state.polls] });
+    }
   };
 
   handleDeletePoll = (pollId) => {
@@ -65,12 +76,13 @@ class App extends React.Component {
           <Sidebar
             polls={this.state.polls}
             selectPoll={this.handleSelectPoll}
-            createPoll={this.handleCreatePoll}
+            submitPoll={this.handleSubmitPoll}
           />
           <MainContent
             selectedPoll={this.state.selectedPoll}
             deletePoll={this.handleDeletePoll}
             handleVote={this.handleUpdateVote}
+            submitPoll={this.handleSubmitPoll}
           />
         </Row>
       </Container>

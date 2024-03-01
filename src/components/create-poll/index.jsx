@@ -101,24 +101,34 @@ class CreatePollForm extends React.Component {
 
     if (isValid) {
       const { title, description, options } = this.state;
-      this.props.createPoll({ title, description, options });
-      this.setState({
-        options: [
-          {
-            id: randomIdGenerator(),
-            value: "",
-            vote: 0,
-          },
-          {
-            id: randomIdGenerator(),
-            value: "",
-            vote: 0,
-          },
-        ],
-        title: "",
-        description: "",
-        errors: {},
-      });
+
+      const poll = { title, description, options };
+
+      if (this.props.isUpdate) {
+        poll.id = this.props.poll.id;
+        this.props.submitPoll(poll);
+        console.log("Update Successfully");
+        this.setState({ errors: {} });
+      } else {
+        this.props.submitPoll(poll);
+        this.setState({
+          options: [
+            {
+              id: randomIdGenerator(),
+              value: "",
+              vote: 0,
+            },
+            {
+              id: randomIdGenerator(),
+              value: "",
+              vote: 0,
+            },
+          ],
+          title: "",
+          description: "",
+          errors: {},
+        });
+      }
     } else {
       this.setState({ errors });
     }
@@ -150,8 +160,6 @@ class CreatePollForm extends React.Component {
     options.forEach((opt, index) => {
       if (!opt.value) {
         optionErrors[index] = "Please provide value on option " + (index + 1);
-      } else if (opt.value.length < 10) {
-        optionErrors[index] = "Option must contains more then 10 characters.";
       } else if (opt.value.length > 100) {
         optionErrors[index] = "Option too long.";
       }
@@ -166,6 +174,13 @@ class CreatePollForm extends React.Component {
       isValid: Object.keys(errors).length === 0,
     };
   };
+
+  componentDidMount() {
+    if (this.props.poll && Object.keys(this.props.poll).length) {
+      const { title, description, options } = this.props.poll;
+      this.setState({ title, description, options });
+    }
+  }
 
   render() {
     return (
@@ -221,7 +236,7 @@ class CreatePollForm extends React.Component {
           )}
         </div>
 
-        <Button>Create Poll</Button>
+        <Button>{this.props.isUpdate ? "Update Poll" : "Create Poll"}</Button>
       </form>
     );
   }

@@ -15,7 +15,7 @@ class SearchAndButton extends React.Component {
   };
 
   render() {
-    const { createPoll } = this.props;
+    const { submitPoll } = this.props;
     return (
       <>
         <Row style={{ gap: "1rem", alignItems: "flex-start" }}>
@@ -30,7 +30,7 @@ class SearchAndButton extends React.Component {
             Create a Poll
           </ModalHeader>
 
-          <CreatePollForm createPoll={createPoll} />
+          <CreatePollForm submitPoll={submitPoll} />
         </Modal>
       </>
     );

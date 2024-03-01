@@ -8,7 +8,7 @@ import VoteAndComments from "../../components/vote-and-comments";
 
 class MainContent extends React.Component {
   render() {
-    const { selectedPoll, deletePoll, handleVote } = this.props;
+    const { selectedPoll, deletePoll, handleVote, submitPoll } = this.props;
 
     if (!Object.keys(selectedPoll).length) {
       return (
@@ -32,7 +32,11 @@ class MainContent extends React.Component {
 
         <p className={classes.date}>{selectedPoll.createdAt}</p>
 
-        <OptionIcon deletePoll={() => deletePoll(selectedPoll.id)} />
+        <OptionIcon
+          poll={selectedPoll}
+          deletePoll={deletePoll}
+          submitPoll={submitPoll}
+        />
         <Space height={10} />
 
         <OptionGroup selectedPoll={selectedPoll} handleVote={handleVote} />

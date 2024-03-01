@@ -6,26 +6,51 @@ import { AiFillDelete } from "react-icons/ai";
 import Space from "../Space";
 import classes from "./option-icon.module.css";
 
-const OptionIcon = ({ deletePoll }) => {
-  return (
-    <Row style={{ marginTop: "1.75rem" }}>
-      <Heading element={"h3"} color={"var(--primary)"}>
-        Options
-      </Heading>
+import Modal, { ModalHeader } from "../modal";
+import CreatePollForm from "../create-poll";
 
-      <Row>
-        <button className={classes.icon}>
-          <MdEdit size={22} color="dodgerblue" />
-        </button>
+class OptionIcon extends React.Component {
+  state = {
+    isOpen: false,
+  };
 
-        <Space width={5} />
+  toggleIsOpen = () => {
+    this.setState({ isOpen: !this.state.isOpen });
+  };
 
-        <button className={classes.icon} onClick={deletePoll}>
-          <AiFillDelete size={22} color="#f00" />
-        </button>
+  render() {
+    const { poll, deletePoll, submitPoll } = this.props;
+    return (
+      <Row style={{ marginTop: "1.75rem" }}>
+        <Heading element={"h3"} color={"var(--primary)"}>
+          Options
+        </Heading>
+
+        <Row>
+          <button className={classes.icon} onClick={this.toggleIsOpen}>
+            <MdEdit size={22} color="dodgerblue" />
+          </button>
+
+          <Space width={5} />
+
+          <button className={classes.icon} onClick={() => deletePoll(poll.id)}>
+            <AiFillDelete size={22} color="#f00" />
+          </button>
+        </Row>
+
+        <Modal isOpen={this.state.isOpen} toggleIsOpen={this.toggleIsOpen}>
+          <ModalHeader
+            style={{ textAlign: "center", flex: 1 }}
+            toggleIsOpen={this.toggleIsOpen}
+          >
+            Update the Poll
+          </ModalHeader>
+
+          <CreatePollForm submitPoll={submitPoll} poll={poll} isUpdate={true} />
+        </Modal>
       </Row>
-    </Row>
-  );
-};
+    );
+  }
+}
 
 export default OptionIcon;
