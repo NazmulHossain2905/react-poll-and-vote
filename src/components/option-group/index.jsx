@@ -14,23 +14,23 @@ const Option = ({ name, percent, className, onClick }) => {
   );
 };
 
-const OptionGroup = ({ selectedPoll, handleVote }) => {
+const OptionGroup = ({ selectedPoll, handleVote, userId }) => {
   const percent = (vote) => ((vote / selectedPoll.totalVote) * 100).toFixed(0);
 
   return (
     <div className={classes["option-group"]}>
-      {selectedPoll.options?.map((option, index) => (
-        <Option
-          key={option?.id}
-          name={option?.value}
-          percent={!isNaN(percent(option?.vote)) ? percent(option?.vote) : 0}
-          onClick={() => handleVote(selectedPoll.id, option?.id)}
-        />
-      ))}
-      {/* <Option name={"C"} percent={13} />
-      <Option name={"Java"} percent={17} />
-      <Option name={"JavaScript"} percent={45} className={classes.selectPoll} />
-      <Option name={"Python"} percent={30} /> */}
+      {selectedPoll.options?.map((option, index) => {
+        const check = option?.voters.find((v) => v.userId === userId);
+        return (
+          <Option
+            key={option?.id}
+            name={option?.value}
+            percent={!isNaN(percent(option?.vote)) ? percent(option?.vote) : 0}
+            onClick={() => handleVote(selectedPoll.id, option?.id)}
+            // className={check && classes.selectPoll}
+          />
+        );
+      })}
     </div>
   );
 };

@@ -19,24 +19,29 @@ class OptionIcon extends React.Component {
   };
 
   render() {
-    const { poll, deletePoll, submitPoll } = this.props;
+    const { poll, deletePoll, submitPoll, userId } = this.props;
     return (
       <Row style={{ marginTop: "1.75rem" }}>
         <Heading element={"h3"} color={"var(--primary)"}>
           Options
         </Heading>
 
-        <Row>
-          <button className={classes.icon} onClick={this.toggleIsOpen}>
-            <MdEdit size={22} color="dodgerblue" />
-          </button>
+        {poll?.userId === userId && (
+          <Row>
+            <button className={classes.icon} onClick={this.toggleIsOpen}>
+              <MdEdit size={22} color="dodgerblue" />
+            </button>
 
-          <Space width={5} />
+            <Space width={5} />
 
-          <button className={classes.icon} onClick={() => deletePoll(poll.id)}>
-            <AiFillDelete size={22} color="#f00" />
-          </button>
-        </Row>
+            <button
+              className={classes.icon}
+              onClick={() => deletePoll(poll.id)}
+            >
+              <AiFillDelete size={22} color="#f00" />
+            </button>
+          </Row>
+        )}
 
         <Modal isOpen={this.state.isOpen} toggleIsOpen={this.toggleIsOpen}>
           <ModalHeader

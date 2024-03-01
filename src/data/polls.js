@@ -3,6 +3,7 @@ import { randomIdGenerator } from "../utils/randomIdGenerator";
 export const polls = [
   {
     id: randomIdGenerator(),
+    userId: "p29ek-v9hhc-2dmc4-v83rp-gc80k",
     title: "What’s your favorite programming language?",
     description:
       "There are a lot of programming languages out there. Which one do you prefer the most?",
@@ -13,21 +14,29 @@ export const polls = [
         id: randomIdGenerator(),
         value: "PHP",
         vote: 5,
+        voters: [],
       },
       {
         id: randomIdGenerator(),
         value: "Rust",
         vote: 20,
+        voters: [],
       },
       {
         id: randomIdGenerator(),
         value: "TypeScript",
         vote: 30,
+        voters: [
+          {
+            userId: "p29ek-v9hhc-2dmc4-v83rp-gc80k",
+          },
+        ],
       },
       {
         id: randomIdGenerator(),
         value: "Kotlin",
         vote: 25,
+        voters: [],
       },
     ],
     comments: [
@@ -49,6 +58,7 @@ export const polls = [
   },
   {
     id: randomIdGenerator(),
+    userId: "p29ek-v9hhc-2dmc4-v83rp-gc80k",
     title: "What’s your favorite programming language?",
     description:
       "There are a lot of programming languages available. Among them, what is your favorite one?",
@@ -59,21 +69,29 @@ export const polls = [
         id: randomIdGenerator(),
         value: "C++",
         vote: 25,
+        voters: [],
       },
       {
         id: randomIdGenerator(),
         value: "Swift",
         vote: 10,
+        voters: [],
       },
       {
         id: randomIdGenerator(),
         value: "Ruby",
         vote: 8,
+        voters: [
+          {
+            userId: "p29ek-v9hhc-2dmc4-v83rp-gc80k",
+          },
+        ],
       },
       {
         id: randomIdGenerator(),
         value: "Go",
         vote: 15,
+        voters: [],
       },
     ],
     comments: [
@@ -105,21 +123,25 @@ export const polls = [
         id: randomIdGenerator(),
         value: "React",
         vote: 85,
+        voters: [],
       },
       {
         id: randomIdGenerator(),
         value: "Vue.js",
         vote: 65,
+        voters: [],
       },
       {
         id: randomIdGenerator(),
         value: "Angular",
         vote: 30,
+        voters: [],
       },
       {
         id: randomIdGenerator(),
         value: "Svelte",
         vote: 40,
+        voters: [],
       },
     ],
     comments: [
@@ -142,6 +164,7 @@ export const polls = [
   },
   {
     id: randomIdGenerator(),
+    userId: "p29ek-v9hhc-2dmc4-v83rp-gc80k",
     title: "Which database technology do you prefer?",
     description:
       "Databases are fundamental to storing and managing data in applications. Let's see which one is the most popular!",
@@ -152,21 +175,25 @@ export const polls = [
         id: randomIdGenerator(),
         value: "MongoDB",
         vote: 50,
+        voters: [],
       },
       {
         id: randomIdGenerator(),
         value: "MySQL",
         vote: 40,
+        voters: [],
       },
       {
         id: randomIdGenerator(),
         value: "PostgreSQL",
         vote: 45,
+        voters: [],
       },
       {
         id: randomIdGenerator(),
         value: "SQLite",
         vote: 25,
+        voters: [],
       },
     ],
     comments: [

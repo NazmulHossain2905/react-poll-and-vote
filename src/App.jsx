@@ -16,10 +16,19 @@ class App extends React.Component {
   state = {
     polls: [],
     selectedPoll: {},
+    userId: "",
   };
 
   componentDidMount() {
     this.setState({ polls });
+
+    const userId = localStorage.getItem("user-id");
+    if (userId !== null) {
+      this.setState({ userId });
+      console.log({ userId });
+    } else {
+      localStorage.setItem("user-id", randomIdGenerator());
+    }
   }
 
   handleSelectPoll = (pollId) => {
@@ -39,6 +48,7 @@ class App extends React.Component {
       this.setState({ polls });
     } else {
       poll.id = randomIdGenerator();
+      poll.userId = this.state.userId;
       poll.createdAt = new Date().toDateString();
       poll.totalVote = 0;
       poll.comments = [];
@@ -56,7 +66,7 @@ class App extends React.Component {
     const { polls } = this.state;
 
     const poll = polls.find((poll) => poll.id === pollId);
-    const option = poll.options.find((o) => o.id === optionId);
+    const option = poll?.options?.find((o) => o.id === optionId);
 
     poll.totalVote += 1;
     option.vote += 1;
@@ -79,6 +89,7 @@ class App extends React.Component {
             submitPoll={this.handleSubmitPoll}
           />
           <MainContent
+            userId={this.state.userId}
             selectedPoll={this.state.selectedPoll}
             deletePoll={this.handleDeletePoll}
             handleVote={this.handleUpdateVote}
