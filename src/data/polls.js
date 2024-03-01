@@ -4,7 +4,7 @@ export const polls = [
   {
     id: randomIdGenerator(),
     userId: "p29ek-v9hhc-2dmc4-v83rp-gc80k",
-    title: "What’s your favorite programming language?",
+    title: "What's your favorite programming language?",
     description:
       "There are a lot of programming languages out there. Which one do you prefer the most?",
     createdAt: new Date().toDateString(),
@@ -59,7 +59,7 @@ export const polls = [
   {
     id: randomIdGenerator(),
     userId: "p29ek-v9hhc-2dmc4-v83rp-gc80k",
-    title: "What’s your favorite programming language?",
+    title: "What's your favorite programming language?",
     description:
       "There are a lot of programming languages available. Among them, what is your favorite one?",
     createdAt: new Date().toDateString(),
